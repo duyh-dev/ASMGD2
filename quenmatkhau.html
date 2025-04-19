@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quên mật khẩu | MyKingdom</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="demo.css" />
+    <style>
+      body {
+        background-color: #fff8e7;
+        padding-top: 90px;
+      }
+
+      .forgot-container {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .forgot-header h1 {
+        color: #d32f2f;
+        margin-bottom: 10px;
+      }
+
+      .forgot-header p {
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .forgot-form input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .forgot-form input:focus {
+        border-color: #f7941d;
+        outline: none;
+      }
+
+      .reset-btn {
+        width: 100%;
+        padding: 12px;
+        background: #f7941d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .reset-btn:hover {
+        background: #e07b00;
+      }
+
+      .back-login {
+        margin-top: 20px;
+      }
+
+      .back-login a {
+        color: #f7941d;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .success-message {
+        display: none;
+        color: #28a745;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img
+            src="./img/White_Playful_Pet_Shop_Logo-removebg-preview.png"
+            alt="MyKingdom Logo"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="cuahang.html">Cửa hàng</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="dangnhap.html" class="login-btn">
+            <i class="fas fa-user"></i>
+            <span>Đăng nhập</span>
+          </a>
+          <a href="#" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="forgot-container">
+        <div class="forgot-header">
+          <h1>QUÊN MẬT KHẨU</h1>
+          <p>Nhập email bạn đã đăng ký để nhận liên kết đặt lại mật khẩu</p>
+        </div>
+
+        <form class="forgot-form" id="forgotForm">
+          <input type="email" placeholder="Email đăng ký" required />
+          <button type="submit" class="reset-btn">GỬI YÊU CẦU</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+          <i
+            class="fas fa-check-circle"
+            style="font-size: 24px; margin-bottom: 10px"
+          ></i>
+          <p>
+            Yêu cầu đã được gửi! Vui lòng kiểm tra email để đặt lại mật khẩu.
+          </p>
+        </div>
+
+        <div class="back-login">
+          <p>
+            <a href="dangnhap.html"
+              ><i class="fas fa-arrow-left"></i> Quay lại đăng nhập</a
+            >
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 MyKingdom. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("forgotForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          document.getElementById("forgotForm").style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
+
+          setTimeout(() => {
+            window.location.href = "dangnhap.html";
+          }, 3000);
+        });
+    </script>
+  </body>
+</html>

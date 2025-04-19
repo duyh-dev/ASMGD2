@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cửa Hàng - MyKingdom</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        background-color: #ff6b6b;
+        color: white;
+        padding: 15px 0;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+
+      .search-container {
+        display: flex;
+        width: 40%;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 20px 0 0 20px;
+      }
+
+      .search-btn {
+        padding: 10px 15px;
+        background-color: #ff8e8e;
+        border: none;
+        border-radius: 0 20px 20px 0;
+        color: white;
+        cursor: pointer;
+      }
+
+      .main-nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      .main-nav ul li {
+        margin-right: 20px;
+      }
+
+      .main-nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn,
+      .cart-btn {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn i,
+      .cart-btn i {
+        margin-right: 5px;
+      }
+
+      .cart-count {
+        background-color: white;
+        color: #ff6b6b;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        margin-left: 5px;
+      }
+
+      .store-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://via.placeholder.com/1920x500") center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        margin-bottom: 40px;
+      }
+
+      .store-hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+      }
+
+      .store-hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      .search-store {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .search-store input {
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 30px;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .search-store button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background: #ff6b6b;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 40px 0 30px;
+        color: #ff6b6b;
+        font-size: 28px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #ff6b6b;
+      }
+
+      .store-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .store-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .store-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .store-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .store-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .store-info {
+        padding: 20px;
+      }
+
+      .store-name {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .store-address,
+      .store-hours,
+      .store-phone {
+        display: flex;
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .store-address i,
+      .store-hours i,
+      .store-phone i {
+        color: #ff6b6b;
+        margin-right: 10px;
+        margin-top: 3px;
+      }
+
+      .store-btn {
+        display: inline-block;
+        background: #ff6b6b;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 15px;
+        transition: background 0.3s;
+      }
+
+      .store-btn:hover {
+        background: #ff4757;
+      }
+
+      .store-map {
+        height: 500px;
+        margin: 50px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .store-map iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .main-footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 50px 0 20px;
+        font-size: 14px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-col h3 {
+        color: #ff6b6b;
+        font-size: 18px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #ff6b6b;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #ecf0f1;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: #ff6b6b;
+        transform: translateY(-3px);
+      }
+
+      .footer-col ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .footer-col ul li i {
+        margin-right: 10px;
+        color: #ff6b6b;
+        margin-top: 3px;
+      }
+
+      .footer-col ul li a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col ul li a:hover {
+        color: #ff6b6b;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bdc3c7;
+        font-size: 13px;
+      }
+
+      @media (max-width: 768px) {
+        .store-hero {
+          padding: 60px 20px;
+        }
+
+        .store-hero h1 {
+          font-size: 2rem;
+        }
+
+        .store-hero p {
+          font-size: 1rem;
+        }
+
+        .store-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .store-map {
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img
+            src="./img/White_Playful_Pet_Shop_Logo-removebg-preview.png"
+            alt="MyKingdom Logo"
+          />
+        </div>
+
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+          <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <link rel="stylesheet" href="demo.css" />
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="cuahang.html" class="active">Cửa hàng</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="dangnhap.html" class="login-btn">
+            <i class="fas fa-user"></i>
+            <span>Đăng nhập</span>
+          </a>
+
+          <a href="#" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="store-hero">
+      <h1>Hệ Thống Cửa Hàng MyKingdom</h1>
+      <p>
+        Tìm cửa hàng gần bạn nhất để trải nghiệm không gian đồ chơi tuyệt vời
+        của chúng tôi
+      </p>
+      <div class="search-store">
+        <input
+          type="text"
+          placeholder="Nhập địa chỉ, thành phố hoặc mã bưu điện..."
+        />
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </section>
+
+    <div class="container">
+      <h2 class="section-title">Cửa Hàng Trên Toàn Quốc</h2>
+
+      <div class="store-grid">
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/Hà Nội.jpg" alt="MyKingdom Hà Nội" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom Hà Nội</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 5, Vincom Mega Mall Royal City, 72A Nguyễn Trãi, Thanh
+                Xuân, Hà Nội</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:00 - 22:00 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>024 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/TP HCM.jpeg" alt="MyKingdom HCM" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom TP.HCM</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 3, Vincom Center Đồng Khởi, 72 Lê Thánh Tôn, Bến Nghé,
+                Quận 1, TP.HCM</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:30 - 22:00 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>028 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/Dà Nẵng.webp" alt="MyKingdom Đà Nẵng" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom Đà Nẵng</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 2, Vincom Plaza Đà Nẵng, 255-257 Hùng Vương, Vĩnh Trung,
+                Thanh Khê, Đà Nẵng</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:00 - 21:30 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>0236 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/Hải Phòng.jpg" alt="MyKingdom Hải Phòng" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom Hải Phòng</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 3, Vincom Plaza Hải Phòng, Số 1 Lê Thánh Tông, Máy Tơ, Ngô
+                Quyền, Hải Phòng</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:00 - 21:30 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>0225 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/Cần thơ.jpg" alt="MyKingdom Cần Thơ" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom Cần Thơ</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 2, Vincom Xuân Khánh, 209 Đường 30/4, Xuân Khánh, Ninh
+                Kiều, Cần Thơ</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:00 - 21:30 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>0292 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+
+        <div class="store-card">
+          <div class="store-image">
+            <img src="imgggg/Nha Trang.webp" alt="MyKingdom Nha Trang" />
+          </div>
+          <div class="store-info">
+            <h3 class="store-name">MyKingdom Nha Trang</h3>
+            <div class="store-address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span
+                >Tầng 2, Vincom Plaza Nha Trang, 78-80 Trần Phú, Lộc Thọ, Nha
+                Trang, Khánh Hòa</span
+              >
+            </div>
+            <div class="store-hours">
+              <i class="fas fa-clock"></i>
+              <span>9:00 - 21:30 (Tất cả các ngày)</span>
+            </div>
+            <div class="store-phone">
+              <i class="fas fa-phone"></i>
+              <span>0258 1234 5678</span>
+            </div>
+            <a href="#" class="store-btn">Xem chỉ đường</a>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Tìm Chúng Tôi Trên Bản Đồ</h2>
+      <div class="store-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.83373276746332!2d106.8347597674591!3d10.937689799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174dffcc5ecddb9%3A0xc8971ea2ed8e08a1!2sFPT%20Polytechnic%20College%20Dong%20Nai!5e0!3m2!1sen!2s!4v1745021658812!5m2!1sen!2s"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>MeoBinhShop</h3>
+            <p>Vương quốc đồ chơi chính hãng cho mọi lứa tuổi</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/pham.minh.369648"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/pvqm_0407?igsh=Y2kydm94bHB0YTZh"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.youtube.com/@mykingdom"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Liên Hệ</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Tổ 9B ấp Hương Phước,
+                Thành Phố Biên Hòa, tỉnh Đồng Nai
+              </li>
+              <li><i class="fas fa-phone"></i> +84 86667920</li>
+              <li><i class="fas fa-envelope"></i> minhpvqtb01892@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Chính Sách</h3>
+            <ul>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Điều khoản sử dụng</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 MeoBinhShop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .querySelector(".search-store button")
+        .addEventListener("click", function () {
+          const searchTerm = document.querySelector(
+            ".search-store input"
+          ).value;
+          if (searchTerm.trim() !== "") {
+            alert("Đang tìm kiếm cửa hàng gần: " + searchTerm);
+          }
+        });
+
+      // Cho phép nhấn Enter để tìm kiếm
+      document
+        .querySelector(".search-store input")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            document.querySelector(".search-store button").click();
+          }
+        });
+
+      // Script cho nút xem chỉ đường
+      document.querySelectorAll(".store-btn").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const storeName =
+            this.closest(".store-info").querySelector(
+              ".store-name"
+            ).textContent;
+          alert("Đang mở bản đồ chỉ đường đến " + storeName);
+        });
+      });
+    </script>
+  </body>
+</html>

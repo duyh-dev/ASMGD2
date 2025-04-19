@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyKingdom - Vương Quốc Đồ Chơi</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img
+            src="./img/White_Playful_Pet_Shop_Logo-removebg-preview.png"
+            alt="MyKingdom Logo"
+          />
+        </div>
+
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+          <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+            <li><a href="cuahang.html">Cửa hàng</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="dangnhap.html" class="login-btn">
+            <i class="fas fa-user"></i>
+            <span>Đăng nhập</span>
+          </a>
+
+          <a href="#" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="slider">
+      <div class="slides">
+        <div class="slide active">
+          <img src="img/Screenshot (104).png" alt="Slide 1" />
+          <div class="slide-text">
+            <h1>Khám phá LEGO mới 2025</h1>
+            <p>Săn ngay ưu đãi độc quyền!</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/Screenshot (105).png" alt="Slide 2" />
+          <div class="slide-text">
+            <h1>Hot Wheels đỉnh cao</h1>
+            <p>Trải nghiệm tốc độ ngay hôm nay!</p>
+          </div>
+        </div>
+      </div>
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </section>
+
+    <section class="products">
+      <div class="container">
+        <h2>Sản phẩm nổi bật</h2>
+
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="product-group">
+                <div class="product-item">
+                  <img
+                    src="imgg/khung-long-hypsilophodon-6-inch-co-khop-linh-hoat-jurassic-world-mattel-jcl47-hln49_3.webp"
+                    alt="Khủng long"
+                  />
+                  <h3>Khủng long</h3>
+                  <p>500.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imgg/HKX41.webp" alt="LEGO" />
+                  <h3>LEGO</h3>
+                  <p>850.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imgg/hnw41-hnw40_copy_0.webp" alt="Búp bê" />
+                  <h3>Búp bê</h3>
+                  <p>1.200.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="product-group">
+                <div class="product-item">
+                  <img
+                    src="imgg/vali-trang-diem-hong-sanh-dieu-make-it-real-20270914-2508mira_4.webp"
+                    alt="Vali đồ chơi"
+                  />
+                  <h3>Vali đồ chơi</h3>
+                  <p>500.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img
+                    src="imgg/142671912315e294e3fa77972d524f83.webp"
+                    alt="Đồ chơi xe hơi"
+                  />
+                  <h3>Xe đạp</h3>
+                  <p>800.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img
+                    src="imgg/D_ch_i_be_gai_b3ab4bd5-f01c-4f9d-b4bf-5d626cec6d7b_296x.webp"
+                    alt="Sản phẩm khác"
+                  />
+                  <h3>Đồng hồ đeo tay</h3>
+                  <p>700.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .product-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .product-item {
+        flex: 1;
+        text-align: center;
+      }
+    </style>
+
+    <section class="new-arrivals">
+      <div class="container">
+        <h2>Hàng mới về bé thích mê</h2>
+
+        <div class="swiper newSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="product-group">
+                <div class="product-item">
+                  <img src="imggg/Lego.webp" alt="Sản phẩm 1" />
+                  <h3>LEGO LẮP RÁP</h3>
+                  <p>600.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imggg/Lego Xe Hơi.webp" alt="Sản phẩm 2" />
+                  <h3>LEGO LẮP XE HƠI</h3>
+                  <p>750.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imggg/Lego Côn trùng.webp" alt="Sản phẩm 3" />
+                  <h3>LEGO LẮP CÔN TRÙNG</h3>
+                  <p>1.000.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="product-group">
+                <div class="product-item">
+                  <img src="imggg/Hary Borter.webp" alt="Sản phẩm 4" />
+                  <h3>SÁCH HARRY POTTER</h3>
+                  <p>900.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imggg/Bộ khuôn.webp" alt="Sản phẩm 5" />
+                  <h3>BỘ KHUÔN</h3>
+                  <p>650.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+                <div class="product-item">
+                  <img src="imggg/LEGO LẮP KÍ TÚC XÁ.webp" alt="Sản phẩm 6" />
+                  <h3>LEGO LẮP RÁP KÍ TÚC XÁ</h3>
+                  <p>700.000 VNĐ</p>
+                  <button class="add-to-cart">Thêm vào giỏ</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section class="news-section">
+            <div class="container">
+              <h2 class="section-title">Tin Tức & Sự Kiện</h2>
+              <div class="news-grid">
+                <div class="news-card">
+                  <img src="img/Screenshot (106).png" alt="Sự kiện" />
+                  <div class="news-content">
+                    <span class="news-date">15/06/2024</span>
+                    <h3>Hội Chợ Đồ Chơi Quốc Tế 2024</h3>
+                    <p>
+                      Triển lãm các sản phẩm đồ chơi mới nhất từ các thương hiệu
+                      hàng đầu thế giới...
+                    </p>
+                    <a href="#" class="read-more">Đọc tiếp</a>
+                  </div>
+                </div>
+                <div class="news-card">
+                  <img src="img/Bup Mang Non.webp" alt="Hướng dẫn" />
+                  <div class="news-content">
+                    <span class="news-date">10/06/2024</span>
+                    <h3>Cách Chọn Đồ Chơi An Toàn Cho Bé</h3>
+                    <p>
+                      Những tiêu chí quan trọng khi lựa chọn đồ chơi cho trẻ em
+                      theo từng độ tuổi...
+                    </p>
+                    <a href="#" class="read-more">Đọc tiếp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Navigation Buttons -->
+          <div class="swiper-button-next new-swiper-next"></div>
+          <div class="swiper-button-prev new-swiper-prev"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>MeoBinhShop</h3>
+            <p>Vương quốc đồ chơi chính hãng cho mọi lứa tuổi</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/pham.minh.369648"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/pvqm_0407?igsh=Y2kydm94bHB0YTZh"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.youtube.com/@mykingdom"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Liên Hệ</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Tổ 9B ấp Hương Phước,
+                Thành Phố Biên Hòa, tỉnh Đồng Nai
+              </li>
+              <li><i class="fas fa-phone"></i> +84 86667920</li>
+              <li><i class="fas fa-envelope"></i> minhpvqtb01892@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Chính Sách</h3>
+            <ul>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Điều khoản sử dụng</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 MeoBinhShop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Đưa các script xuống cuối body -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Swiper cho sản phẩm nổi bật
+        var mainSwiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          loop: true,
+        });
+
+        // Swiper cho hàng mới về
+        var newSwiper = new Swiper(".newSwiper", {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: ".new-swiper-next",
+            prevEl: ".new-swiper-prev",
+          },
+          loop: true,
+        });
+      });
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

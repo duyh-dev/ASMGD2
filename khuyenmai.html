@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khuyến Mãi - MyKingdom</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header giữ nguyên */
+      header {
+        background-color: #ff6b6b;
+        color: white;
+        padding: 15px 0;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+
+      .search-container {
+        display: flex;
+        width: 40%;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 20px 0 0 20px;
+      }
+
+      .search-btn {
+        padding: 10px 15px;
+        background-color: #ff8e8e;
+        border: none;
+        border-radius: 0 20px 20px 0;
+        color: white;
+        cursor: pointer;
+      }
+
+      .main-nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      .main-nav ul li {
+        margin-right: 20px;
+      }
+
+      .main-nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn,
+      .cart-btn {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn i,
+      .cart-btn i {
+        margin-right: 5px;
+      }
+
+      .cart-count {
+        background-color: white;
+        color: #ff6b6b;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        margin-left: 5px;
+      }
+
+      /* CSS riêng cho trang khuyến mãi */
+      .promo-banner {
+        background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .promo-banner h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .promo-banner p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .countdown-item {
+        background-color: white;
+        color: #ff6b6b;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        min-width: 70px;
+      }
+
+      .countdown-label {
+        display: block;
+        font-size: 0.8rem;
+        color: white;
+        margin-top: 5px;
+      }
+
+      .promo-section {
+        margin: 40px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #ff6b6b;
+        font-size: 28px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #ff6b6b;
+      }
+
+      .promo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .promo-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .promo-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .promo-badge {
+        background-color: #ff4757;
+        color: white;
+        padding: 5px 15px;
+        display: inline-block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .promo-image {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .promo-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .promo-content {
+        padding: 20px;
+      }
+
+      .promo-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .promo-price {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .current-price {
+        color: #ff6b6b;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-right: 10px;
+      }
+
+      .old-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 1rem;
+      }
+
+      .discount {
+        background-color: #ff6b6b;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        margin-left: 10px;
+      }
+
+      .promo-desc {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .promo-btn {
+        display: block;
+        text-align: center;
+        background-color: #ff6b6b;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .promo-btn:hover {
+        background-color: #ff4757;
+      }
+
+      /* Footer giữ nguyên */
+      .main-footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 50px 0 20px;
+        font-size: 14px;
+        margin-top: 50px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-col h3 {
+        color: #ff6b6b;
+        font-size: 18px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #ff6b6b;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #ecf0f1;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: #ff6b6b;
+        transform: translateY(-3px);
+      }
+
+      .footer-col ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .footer-col ul li i {
+        margin-right: 10px;
+        color: #ff6b6b;
+        margin-top: 3px;
+      }
+
+      .footer-col ul li a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col ul li a:hover {
+        color: #ff6b6b;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bdc3c7;
+        font-size: 13px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .promo-banner h1 {
+          font-size: 1.8rem;
+        }
+
+        .promo-banner p {
+          font-size: 1rem;
+        }
+
+        .countdown-item {
+          font-size: 1.2rem;
+          min-width: 60px;
+          padding: 8px 10px;
+        }
+
+        .section-title {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Thiết lập thời gian kết thúc khuyến mãi
+      const endDate = new Date("2025-12-31T23:59:59").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = endDate - now;
+
+        if (timeLeft <= 0) {
+          document.getElementById("days").innerText = "00";
+          document.getElementById("hours").innerText = "00";
+          document.getElementById("minutes").innerText = "00";
+          document.getElementById("seconds").innerText = "00";
+          return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("hours").innerText = String(hours).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("minutes").innerText = String(minutes).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("seconds").innerText = String(seconds).padStart(
+          2,
+          "0"
+        );
+      }
+
+      // Cập nhật mỗi giây
+      setInterval(updateCountdown, 1000);
+      updateCountdown(); // chạy lần đầu
+    </script>
+    <!-- Header giữ nguyên -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img
+            src="./img/White_Playful_Pet_Shop_Logo-removebg-preview.png"
+            alt="MyKingdom Logo"
+          />
+        </div>
+
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+          <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <link rel="stylesheet" href="demo.css" />
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="khuyenmai.html" class="active">Khuyến mãi</a></li>
+            <li><a href="cuahang.html">Cửa hàng</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="dangnhap.html" class="login-btn">
+            <i class="fas fa-user"></i>
+            <span>Đăng nhập</span>
+          </a>
+
+          <a href="#" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Nội dung khuyến mãi -->
+    <div class="container">
+      <div class="promo-banner">
+        <h1>SIÊU KHUYẾN MÃI CUỐI NĂM</h1>
+        <p>Giảm giá lên đến 50% - Chỉ còn trong:</p>
+
+        <div class="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <span class="countdown-label">Ngày</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <span class="countdown-label">Giờ</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <span class="countdown-label">Phút</span>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <span class="countdown-label">Giây</span>
+          </div>
+        </div>
+
+        <button class="promo-btn" style="max-width: 200px; margin: 0 auto">
+          MUA NGAY
+        </button>
+      </div>
+
+      <div class="promo-section">
+        <h2 class="section-title">Sản Phẩm Khuyến Mãi</h2>
+
+        <div class="promo-grid">
+          <!-- Sản phẩm 1 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-30%</span>
+              <img src="imgg/hnw41-hnw40_copy_0.webp" alt="LEGO Creator" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">Búp bê</h3>
+              <div class="promo-price">
+                <span class="current-price">699.000đ</span>
+                <span class="old-price">999.000đ</span>
+                <span class="discount">Tiết kiệm 300K</span>
+              </div>
+              <p class="promo-desc">
+                Bộ lắp ráp 3 trong 1 với 3 mô hình khác nhau cho bé thỏa sức
+                sáng tạo
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 2 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-50%</span>
+              <img src="imggg/Bộ khuôn.webp" alt="Búp bê Barbie" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">Bộ khuôn</h3>
+              <div class="promo-price">
+                <span class="current-price">499.000đ</span>
+                <span class="old-price">999.000đ</span>
+                <span class="discount">Tiết kiệm 500K</span>
+              </div>
+              <p class="promo-desc">
+                Bộ sưu tập búp bê Barbie mới nhất với nhiều phụ kiện thời trang
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 3 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-40%</span>
+              <img src="imggg/LEGO LẮP KÍ TÚC XÁ.webp" alt="Đồ chơi giáo dục" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">LEGO LẮP KÍ TÚC XÁ</h3>
+              <div class="promo-price">
+                <span class="current-price">359.000đ</span>
+                <span class="old-price">599.000đ</span>
+                <span class="discount">Tiết kiệm 240K</span>
+              </div>
+              <p class="promo-desc">
+                Học chữ cái, số đếm và từ vựng tiếng Anh qua hình ảnh sinh động
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 4 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-25%</span>
+              <img src="imgggg/Lego lắp gạch.webp" alt="Xe đạp trẻ em" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">Lego lắp gạch</h3>
+              <div class="promo-price">
+                <span class="current-price">1.125.000đ</span>
+                <span class="old-price">1.500.000đ</span>
+                <span class="discount">Tiết kiệm 375K</span>
+              </div>
+              <p class="promo-desc">
+                Xe đạp 3 bánh an toàn cho bé từ 2-5 tuổi, nhiều màu sắc
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 5 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-35%</span>
+              <img src="imggg/Khung Long v2.webp" alt="Đồ chơi nấu ăn" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">Khung Long v2</h3>
+              <div class="promo-price">
+                <span class="current-price">487.500đ</span>
+                <span class="old-price">750.000đ</span>
+                <span class="discount">Tiết kiệm 262.5K</span>
+              </div>
+              <p class="promo-desc">
+                Bộ đồ chơi nấu ăn đầy đủ dụng cụ cho bé gái phát triển kỹ năng
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 6 -->
+          <div class="promo-card">
+            <div class="promo-image">
+              <span class="promo-badge">-20%</span>
+              <img src="imggg/rOBOT CANH SAT.webp" alt="Bể bơi phao" />
+            </div>
+            <div class="promo-content">
+              <h3 class="promo-title">rOBOT CANH SAT</h3>
+              <div class="promo-price">
+                <span class="current-price">399.000đ</span>
+                <span class="old-price">499.000đ</span>
+                <span class="discount">Tiết kiệm 100K</span>
+              </div>
+              <p class="promo-desc">
+                Bể bơi phao kích thước lớn, an toàn cho bé vui chơi mùa hè
+              </p>
+              <a href="#" class="promo-btn">THÊM VÀO GIỎ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer giữ nguyên -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>MeoBinhShop</h3>
+            <p>Vương quốc đồ chơi chính hãng cho mọi lứa tuổi</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/pham.minh.369648"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/pvqm_0407?igsh=Y2kydm94bHB0YTZh"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.youtube.com/@mykingdom"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Liên Hệ</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Tổ 9B ấp Hương Phước,
+                Thành Phố Biên Hòa, tỉnh Đồng Nai
+              </li>
+              <li><i class="fas fa-phone"></i> +84 86667920</li>
+              <li><i class="fas fa-envelope"></i> minhpvqtb01892@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Chính Sách</h3>
+            <ul>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Điều khoản sử dụng</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2025 MeoBinhShop. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Countdown timer
+      function updateCountdown() {
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 7); // 7 ngày từ hôm nay
+
+        const now = new Date().getTime();
+        const distance = endDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      const addToCartButtons = document.querySelectorAll(".promo-btn");
+      const cartCount = document.querySelector(".cart-count");
+
+      addToCartButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          let count = parseInt(cartCount.textContent);
+          cartCount.textContent = count + 1;
+
+          this.textContent = "ĐÃ THÊM!";
+          setTimeout(() => {
+            this.textContent = "THÊM VÀO GIỎ";
+          }, 1500);
+        });
+      });
+
+      const endTime = new Date("2025-04-20T23:59:59").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance <= 0) {
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+          return;
+        }
+
+        const hours = String(
+          Math.floor((distance / (1000 * 60 * 60)) % 24)
+        ).padStart(2, "0");
+        const minutes = String(
+          Math.floor((distance / (1000 * 60)) % 60)
+        ).padStart(2, "0");
+        const seconds = String(Math.floor((distance / 1000) % 60)).padStart(
+          2,
+          "0"
+        );
+
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>
